@@ -1,1578 +1,1061 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skalny Systems | AI Automation for Growing Businesses</title>
-  <meta name="description"
-    content="Systematic automation for businesses that are ready to scale. We help tax offices, law firms, medical practices, and local service businesses eliminate manual work with AI automation." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <style>
-    /* ============================================
-         DESIGN SYSTEM & CSS VARIABLES
-         ============================================ */
-    :root {
-      --bg-color: #0A0C10;
-      --text-color: #E2E8F0;
-      --primary-blue: #3B82F6;
-      --secondary-purple: #8B5CF6;
-      --glass-bg: rgba(255, 255, 255, 0.02);
-      --glass-border: rgba(255, 255, 255, 0.05);
-      --glass-border-hover: rgba(59, 130, 246, 0.25);
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.2);
-      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.35);
-      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* ============================================
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skalny Systems | AI Automation for Growing Businesses</title>
+    <meta name="description" content="Systematic automation for businesses that are ready to scale. We help tax offices, law firms, medical practices, and local service businesses eliminate manual work with AI automation." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* ============================================
          BASE STYLES & RESET
          ============================================ */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg-color);
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.02) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.02) 0%, transparent 40%);
-      color: var(--text-color);
-      line-height: 1.6;
-      font-size: 1rem;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #0F1117;
+        color: #E2E8F0;
+        line-height: 1.6;
+        font-size: 1rem;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    .logo,
-    .footer-logo,
-    .step-number,
-    .stat-number,
-    .cta-button {
-      font-family: 'Outfit', sans-serif;
-    }
-
-    /* ============================================
+      /* ============================================
          UTILITY CLASSES
          ============================================ */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section {
-      padding: 100px 0;
-    }
-
-    .section-title {
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 16px;
-      text-align: center;
-      letter-spacing: -0.01em;
-    }
-
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: #94A3B8;
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 60px;
-      line-height: 1.7;
-    }
-
-    /* ============================================
-         ANIMATIONS & STAGGER DELAYS
-         ============================================ */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* CSS Staggering Delays for Grid elements */
-    .services-grid .service-card:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-
-    .services-grid .service-card:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-
-    .services-grid .service-card:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-
-    .who-help-grid .who-help-item:nth-child(1) {
-      transition-delay: 0.05s;
-    }
-
-    .who-help-grid .who-help-item:nth-child(2) {
-      transition-delay: 0.1s;
-    }
-
-    .who-help-grid .who-help-item:nth-child(3) {
-      transition-delay: 0.15s;
-    }
-
-    .who-help-grid .who-help-item:nth-child(4) {
-      transition-delay: 0.2s;
-    }
-
-    .how-works-timeline .how-works-step:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-
-    .how-works-timeline .how-works-step:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-
-    .how-works-timeline .how-works-step:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-
-    .how-works-timeline .how-works-step:nth-child(4) {
-      transition-delay: 0.4s;
-    }
-
-    .stats-grid .stat-card:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-
-    .stats-grid .stat-card:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-
-    .stats-grid .stat-card:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-
-    .case-studies-grid .case-study-card:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-
-    .case-studies-grid .case-study-card:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-
-    .case-studies-grid .case-study-card:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-
-    /* ============================================
-         NAVIGATION
-         ============================================ */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(11, 13, 19, 0.8);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      transition: var(--transition-smooth);
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 1.25rem;
-    }
-
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #94A3B8;
-      text-decoration: none;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      transition: var(--transition-smooth);
-    }
-
-    .nav-links a:hover {
-      color: #FFFFFF;
-    }
-
-    .nav-cta {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #FFFFFF;
-      padding: 10px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      transition: var(--transition-smooth);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav-cta:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.05);
-    }
-
-    .mobile-menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-
-    .mobile-menu-toggle span {
-      width: 24px;
-      height: 2px;
-      background: #E2E8F0;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* ============================================
-         HERO SECTION & BACKGROUND EFFECTS
-         ============================================ */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 100px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero .container {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .hero-glow-1 {
-      position: absolute;
-      top: -15%;
-      left: 15%;
-      width: clamp(300px, 45vw, 600px);
-      height: clamp(300px, 45vw, 600px);
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(29, 78, 216, 0.05) 50%, transparent 70%);
-      filter: blur(100px);
-      border-radius: 50%;
-      animation: floatOrb1 25s infinite alternate ease-in-out;
-    }
-
-    .hero-glow-2 {
-      position: absolute;
-      bottom: -10%;
-      right: 10%;
-      width: clamp(350px, 50vw, 700px);
-      height: clamp(350px, 50vw, 700px);
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(109, 40, 217, 0.03) 55%, transparent 75%);
-      filter: blur(120px);
-      border-radius: 50%;
-      animation: floatOrb2 30s infinite alternate ease-in-out;
-    }
-
-    .hero-glow-3 {
-      position: absolute;
-      top: 30%;
-      left: 35%;
-      width: clamp(250px, 35vw, 500px);
-      height: clamp(250px, 35vw, 500px);
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
-      filter: blur(80px);
-      border-radius: 50%;
-      animation: floatOrb3 20s infinite alternate ease-in-out;
-    }
-
-    .hero-grid {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 50px 50px;
-      background-position: center top;
-      mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 80%);
-    }
-
-    #hero-particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.85;
-    }
-
-    @keyframes floatOrb1 {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate(60px, -40px) scale(1.15);
-      }
-
-      100% {
-        transform: translate(-30px, 50px) scale(0.9);
-      }
-    }
-
-    @keyframes floatOrb2 {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate(-50px, 50px) scale(0.9);
-      }
-
-      100% {
-        transform: translate(40px, -30px) scale(1.1);
-      }
-    }
-
-    @keyframes floatOrb3 {
-      0% {
-        transform: translate(0, 0);
-      }
-
-      50% {
-        transform: translate(-30px, -30px);
-      }
-
-      100% {
-        transform: translate(30px, 30px);
-      }
-    }
-
-    .hero-content {
-      text-align: left;
-      max-width: 900px;
-      margin: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      color: #60A5FA;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.05);
-    }
-
-    .hero-badge-dot {
-      width: 6px;
-      height: 6px;
-      background-color: #3B82F6;
-      border-radius: 50%;
-      display: inline-block;
-      animation: pulseBadge 2s infinite;
-    }
-
-    @keyframes pulseBadge {
-      0% {
-        transform: scale(0.9);
-        opacity: 0.6;
-      }
-
-      50% {
-        transform: scale(1.2);
-        opacity: 1;
-        box-shadow: 0 0 8px #3B82F6;
-      }
-
-      100% {
-        transform: scale(0.9);
-        opacity: 0.6;
-      }
-    }
-
-    .hero-headline {
-      font-size: clamp(1.85rem, 3.6vw, 2.85rem);
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .hero-headline-top {
-      color: #FFFFFF;
-      font-weight: 800;
-      display: block;
-    }
-
-    .hero-headline-bottom {
-      color: rgba(255, 255, 255, 0.45);
-      font-weight: 500;
-      display: block;
-    }
-
-    @media (min-width: 768px) {
-
-      .hero-headline-top,
-      .hero-headline-bottom {
-        white-space: nowrap;
-      }
-    }
-
-    .hero-subheadline {
-      font-size: clamp(1.125rem, 2vw, 1.25rem);
-      color: #94A3B8;
-      line-height: 1.7;
-      max-width: 750px;
-      margin: 0 0 48px 0;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
-      color: #FFFFFF;
-      padding: 16px 36px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.975rem;
-      letter-spacing: 0.01em;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      cursor: pointer;
-      z-index: 1;
-      transition: var(--transition-smooth);
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-    }
-
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
-      z-index: -1;
-      opacity: 0;
-      transition: var(--transition-smooth);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .cta-button:hover::before {
-      opacity: 1;
-    }
-
-    /* ============================================
-         SERVICES SECTION
-         ============================================ */
-    .services {
-      background: linear-gradient(180deg, #0A0C10 0%, #0D0F16 100%);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
-    .service-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 40px 32px;
-      text-align: center;
-      transition: var(--transition-smooth);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg), 0 0 24px rgba(59, 130, 246, 0.04);
-      border-color: var(--glass-border-hover);
-    }
-
-    .service-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 24px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 100%);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.75rem;
-      transition: var(--transition-smooth);
-    }
-
-    .service-card:hover .service-icon {
-      transform: scale(1.08) rotate(3deg);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(139, 92, 246, 0.1) 100%);
-      border-color: rgba(59, 130, 246, 0.4);
-    }
-
-    .service-card h3 {
-      font-size: 1.375rem;
-      font-weight: 600;
-      color: #FFFFFF;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      color: #94A3B8;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    /* ============================================
-         WHO WE HELP SECTION
-         ============================================ */
-    .who-help {
-      background: #0D0F16;
-    }
-
-    .who-help-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .who-help-item {
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
-      padding: 32px 24px;
-      text-align: center;
-      transition: var(--transition-smooth);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .who-help-item:hover {
-      transform: translateY(-6px);
-      border-color: var(--glass-border-hover);
-      box-shadow: var(--shadow-md), 0 0 20px rgba(59, 130, 246, 0.04);
-    }
-
-    .who-help-icon {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 16px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.03) 100%);
-      border: 1px solid rgba(59, 130, 246, 0.15);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .who-help-item:hover .who-help-icon {
-      transform: scale(1.08);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.08) 100%);
-      border-color: rgba(59, 130, 246, 0.35);
-    }
-
-    .who-help-item h4 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #FFFFFF;
-    }
-
-    /* ============================================
-         HOW IT WORKS SECTION
-         ============================================ */
-    .how-works {
-      background: linear-gradient(180deg, #0D0F16 0%, #0A0C10 100%);
-    }
-
-    .how-works-timeline {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      position: relative;
-    }
-
-    .how-works-step {
-      text-align: center;
-      position: relative;
-    }
-
-    .step-number {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 24px;
-      background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.08);
-      transition: var(--transition-smooth);
-    }
-
-    .how-works-step:hover .step-number {
-      transform: scale(1.08);
-      box-shadow: 0 12px 28px rgba(139, 92, 246, 0.35);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .how-works-step h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #FFFFFF;
-      margin-bottom: 12px;
-    }
-
-    .how-works-step p {
-      color: #94A3B8;
-      font-size: 0.9375rem;
-      line-height: 1.6;
-    }
-
-    /* ============================================
-         STATS SECTION
-         ============================================ */
-    .stats {
-      background: #0A0C10;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
-    .stat-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 48px 32px;
-      text-align: center;
-      transition: var(--transition-smooth);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .stat-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(139, 92, 246, 0.25);
-      box-shadow: var(--shadow-md), 0 0 24px rgba(139, 92, 246, 0.04);
-    }
-
-    .stat-number {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: 800;
-      color: #FFFFFF;
-      line-height: 1;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, #FFFFFF 30%, #93C5FD 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .stat-number span {
-      background: linear-gradient(135deg, #60A5FA 0%, #8B5CF6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .stat-label {
-      font-size: 1rem;
-      color: #94A3B8;
-      font-weight: 500;
-    }
-
-    /* ============================================
-         CASE STUDIES SECTION
-         ============================================ */
-    .case-studies {
-      background: linear-gradient(180deg, #0A0C10 0%, #0D0F16 100%);
-    }
-
-    .case-studies-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-
-    .case-study-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 40px 32px;
-      transition: var(--transition-smooth);
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .case-study-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--glass-border-hover);
-      box-shadow: var(--shadow-lg), 0 0 24px rgba(37, 99, 235, 0.04);
-    }
-
-    .case-study-industry {
-      display: inline-block;
-      background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      color: #60A5FA;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 20px;
-      align-self: flex-start;
-    }
-
-    .case-study-result {
-      font-size: 1.375rem;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 16px;
-      line-height: 1.4;
-    }
-
-    .case-study-problem {
-      color: #94A3B8;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-
-    .case-study-quote {
-      font-style: italic;
-      color: #CBD5E1;
-      font-size: 0.9375rem;
-      line-height: 1.6;
-      padding-left: 16px;
-      border-left: 3px solid var(--primary-blue);
-      margin-top: auto;
-    }
-
-    /* ============================================
-         FINAL CTA SECTION
-         ============================================ */
-    .final-cta {
-      background: linear-gradient(180deg, #0D0F16 0%, #0A0C10 100%);
-      text-align: center;
-    }
-
-    .final-cta-content {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .final-cta h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 20px;
-    }
-
-    .final-cta p {
-      font-size: 1.125rem;
-      color: #94A3B8;
-      margin-bottom: 40px;
-      line-height: 1.7;
-    }
-
-    /* ============================================
-         FOOTER
-         ============================================ */
-    .footer {
-      background: #06070B;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      padding: 60px 0 40px;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 1.25rem;
-    }
-
-    .footer-tagline {
-      color: #94A3B8;
-      font-size: 1rem;
-      text-align: center;
-    }
-
-    .footer-nav {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .footer-nav a {
-      color: #94A3B8;
-      text-decoration: none;
-      font-size: 0.9375rem;
-      transition: var(--transition-smooth);
-    }
-
-    .footer-nav a:hover {
-      color: #E2E8F0;
-    }
-
-    .footer-copyright {
-      color: #64748B;
-      font-size: 0.875rem;
-      text-align: center;
-    }
-
-    .footer-divider {
-      width: 100%;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.04);
-      margin: 20px 0;
-    }
-
-    /* ============================================
-         MOBILE RESPONSIVE STYLES
-         ============================================ */
-    @media (max-width: 1024px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .who-help-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .how-works-timeline {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .case-studies-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 768px) {
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .mobile-menu-toggle {
-        display: flex;
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
 
       .section {
-        padding: 80px 0;
+        padding: 100px 0;
       }
 
-      .services-grid,
-      .who-help-grid,
-      .how-works-timeline,
-      .stats-grid,
-      .case-studies-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 140px 0 80px;
-      }
-
-      .hero-subheadline {
-        margin-bottom: 40px;
+      .section-title {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 600;
+        color: #FFFFFF;
+        margin-bottom: 16px;
+        text-align: center;
       }
 
       .section-subtitle {
-        margin-bottom: 48px;
+        font-size: 1.125rem;
+        color: #94A3B8;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 60px;
+        line-height: 1.7;
       }
-    }
 
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 20px;
+      /* ============================================
+         ANIMATIONS
+         ============================================ */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
-      .section {
-        padding: 60px 0;
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ============================================
+         NAVIGATION
+         ============================================ */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(15, 17, 23, 0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        transition: background 0.3s ease;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #94A3B8;
+        text-decoration: none;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: #FFFFFF;
+      }
+
+      .nav-cta {
+        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        color: #FFFFFF;
+        padding: 10px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .mobile-menu-toggle span {
+        width: 24px;
+        height: 2px;
+        background: #E2E8F0;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      /* ============================================
+         HERO SECTION
+         ============================================ */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(ellipse at top center, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-headline {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        color: #FFFFFF;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-subheadline {
+        font-size: clamp(1.125rem, 2vw, 1.25rem);
+        color: #94A3B8;
+        line-height: 1.7;
+        max-width: 750px;
+        margin: 0 auto 48px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        color: #FFFFFF;
+        padding: 16px 40px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.0625rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 32px rgba(37, 99, 235, 0.4);
+      }
+
+      /* ============================================
+         SERVICES SECTION
+         ============================================ */
+      .services {
+        background: linear-gradient(180deg, #0F1117 0%, #12141C 100%);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .service-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 40px 32px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .service-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 24px;
+        background: rgba(37, 99, 235, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+      }
+
+      .service-card h3 {
+        font-size: 1.375rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+      }
+
+      .service-card p {
+        color: #94A3B8;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      /* ============================================
+         WHO WE HELP SECTION
+         ============================================ */
+      .who-help {
+        background: #0F1117;
       }
 
       .who-help-grid {
-        gap: 16px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
       }
 
-      .service-card,
-      .stat-card,
-      .case-study-card {
+      .who-help-item {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
         padding: 32px 24px;
+        text-align: center;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .who-help-item:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .who-help-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 16px;
+        background: rgba(37, 99, 235, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      .who-help-item h4 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #FFFFFF;
+      }
+
+      /* ============================================
+         HOW IT WORKS SECTION
+         ============================================ */
+      .how-works {
+        background: linear-gradient(180deg, #0F1117 0%, #12141C 100%);
+      }
+
+      .how-works-timeline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+        position: relative;
+      }
+
+      .how-works-step {
+        text-align: center;
+        position: relative;
+      }
+
+      .step-number {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 24px;
+        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #FFFFFF;
+        position: relative;
+        z-index: 2;
+      }
+
+      .how-works-step h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+      }
+
+      .how-works-step p {
+        color: #94A3B8;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+      }
+
+      /* ============================================
+         STATS SECTION
+         ============================================ */
+      .stats {
+        background: #0F1117;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 48px 32px;
+        text-align: center;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .stat-number {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: #FFFFFF;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .stat-number span {
+        color: #3B82F6;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #94A3B8;
+        font-weight: 500;
+      }
+
+      /* ============================================
+         CASE STUDIES SECTION
+         ============================================ */
+      .case-studies {
+        background: linear-gradient(180deg, #0F1117 0%, #12141C 100%);
+      }
+
+      .case-studies-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
+
+      .case-study-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 40px 32px;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .case-study-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .case-study-industry {
+        display: inline-block;
+        background: rgba(37, 99, 235, 0.15);
+        color: #3B82F6;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 16px;
+      }
+
+      .case-study-result {
+        font-size: 1.375rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin-bottom: 16px;
+        line-height: 1.4;
+      }
+
+      .case-study-problem {
+        color: #94A3B8;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .case-study-quote {
+        font-style: italic;
+        color: #CBD5E1;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        padding-left: 16px;
+        border-left: 3px solid #3B82F6;
+      }
+
+      /* ============================================
+         FINAL CTA SECTION
+         ============================================ */
+      .final-cta {
+        background: linear-gradient(180deg, #12141C 0%, #0F1117 100%);
+        text-align: center;
+      }
+
+      .final-cta-content {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .final-cta h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+      }
+
+      .final-cta p {
+        font-size: 1.125rem;
+        color: #94A3B8;
+        margin-bottom: 40px;
+        line-height: 1.7;
+      }
+
+      /* ============================================
+         FOOTER
+         ============================================ */
+      .footer {
+        background: #0A0C12;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 60px 0 40px;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
+
+      .footer-tagline {
+        color: #94A3B8;
+        font-size: 1rem;
+        text-align: center;
       }
 
       .footer-nav {
-        gap: 20px;
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-    }
 
-    /* ============================================
+      .footer-nav a {
+        color: #94A3B8;
+        text-decoration: none;
+        font-size: 0.9375rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-nav a:hover {
+        color: #E2E8F0;
+      }
+
+      .footer-copyright {
+        color: #64748B;
+        font-size: 0.875rem;
+        text-align: center;
+      }
+
+      .footer-divider {
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.06);
+        margin: 20px 0;
+      }
+
+      /* ============================================
+         MOBILE RESPONSIVE STYLES
+         ============================================ */
+      @media (max-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .who-help-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .how-works-timeline {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .case-studies-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links, .nav-cta {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+        }
+
+        .section {
+          padding: 80px 0;
+        }
+
+        .services-grid,
+        .who-help-grid,
+        .how-works-timeline,
+        .stats-grid,
+        .case-studies-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 140px 0 80px;
+        }
+
+        .hero-subheadline {
+          margin-bottom: 40px;
+        }
+
+        .section-subtitle {
+          margin-bottom: 48px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 20px;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .who-help-grid {
+          gap: 16px;
+        }
+
+        .service-card,
+        .stat-card,
+        .case-study-card {
+          padding: 32px 24px;
+        }
+
+        .footer-nav {
+          gap: 20px;
+        }
+      }
+
+      /* ============================================
          MOBILE MENU (JS TOGGLED)
          ============================================ */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      background: rgba(11, 13, 19, 0.98);
-      backdrop-filter: blur(12px);
-      padding: 24px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      z-index: 999;
-    }
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(15, 17, 23, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        z-index: 999;
+      }
 
-    .mobile-menu.active {
-      display: block;
-    }
+      .mobile-menu.active {
+        display: block;
+      }
 
-    .mobile-menu-links {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      list-style: none;
-      margin-bottom: 24px;
-    }
+      .mobile-menu-links {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        list-style: none;
+        margin-bottom: 24px;
+      }
 
-    .mobile-menu-links a {
-      color: #E2E8F0;
-      text-decoration: none;
-      font-size: 1.125rem;
-      font-weight: 500;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
+      .mobile-menu-links a {
+        color: #E2E8F0;
+        text-decoration: none;
+        font-size: 1.125rem;
+        font-weight: 500;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
 
-    .mobile-menu-cta {
-      width: 100%;
-      text-align: center;
-      display: block;
-    }
-  </style>
-</head>
+      .mobile-menu-cta {
+        width: 100%;
+        text-align: center;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="#" class="logo">
+          <div class="logo-icon">SS</div>
+          <span>Skalny Systems</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#who-help">Who We Help</a></li>
+          <li><a href="#how-works">How It Works</a></li>
+          <li><a href="#results">Results</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Book a Free Strategy Call</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
 
-<body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">SS</div>
-        <span>Skalny Systems</span>
-      </a>
-      <ul class="nav-links">
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <ul class="mobile-menu-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#who-help">Who We Help</a></li>
         <li><a href="#how-works">How It Works</a></li>
         <li><a href="#results">Results</a></li>
       </ul>
-      <a href="#contact" class="nav-cta">Book a Free Strategy Call</a>
-      <button class="mobile-menu-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <a href="#contact" class="cta-button mobile-menu-cta">Book a Free Strategy Call</a>
     </div>
-  </nav>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <ul class="mobile-menu-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#who-help">Who We Help</a></li>
-      <li><a href="#how-works">How It Works</a></li>
-      <li><a href="#results">Results</a></li>
-    </ul>
-    <a href="#contact" class="cta-button mobile-menu-cta">Book a Free Strategy Call</a>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-glow-1"></div>
-      <div class="hero-glow-2"></div>
-      <div class="hero-glow-3"></div>
-      <div class="hero-grid"></div>
-      <canvas id="hero-particles"></canvas>
-    </div>
-    <div class="container">
-      <div class="hero-content fade-in-up">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          <span>⚡ AI Automation Specialists</span>
-        </div>
-        <h1 class="hero-headline">
-          <span class="hero-headline-top">Your team is spending hours on work</span>
-          <span class="hero-headline-bottom">that shouldn't require a human.</span>
-        </h1>
-        <p class="hero-subheadline">Manual data entry. Disconnected tools. Repeating the same steps every day. AI
-          automation isn't a trend — it's a systematic way to reclaim time.</p>
-        <a href="#contact" class="cta-button">Book a Free Strategy Call</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="section services">
-    <div class="container">
-      <h2 class="section-title fade-in-up">What We Build</h2>
-      <p class="section-subtitle fade-in-up">Systems that eliminate manual work and let your team focus on what actually
-        matters.</p>
-      <div class="services-grid">
-        <div class="service-card fade-in-up">
-          <div class="service-icon">&#127760;</div>
-          <h3>AI-Powered Websites</h3>
-          <p>Smart, conversion-focused websites built for local businesses.</p>
-        </div>
-        <div class="service-card fade-in-up">
-          <div class="service-icon">&#9881;</div>
-          <h3>Automation Workflows</h3>
-          <p>Eliminate manual, repetitive work with intelligent process automation.</p>
-        </div>
-        <div class="service-card fade-in-up">
-          <div class="service-icon">&#128200;</div>
-          <h3>Lead Generation Systems</h3>
-          <p>Automated pipelines that qualify and capture leads 24/7.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content fade-in-up">
+          <h1 class="hero-headline">Your team is spending hours on work that shouldn't require a human.</h1>
+          <p class="hero-subheadline">Manual data entry. Disconnected tools. Repeating the same steps every day. AI automation isn't a trend — it's a systematic way to reclaim time.</p>
+          <a href="#contact" class="cta-button">Book a Free Strategy Call</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Who We Help Section -->
-  <section id="who-help" class="section who-help">
-    <div class="container">
-      <h2 class="section-title fade-in-up">Who We Help</h2>
-      <p class="section-subtitle fade-in-up">We specialize in industries where time is critical and processes are often
-        manual.</p>
-      <div class="who-help-grid">
-        <div class="who-help-item fade-in-up">
-          <div class="who-help-icon">&#128176;</div>
-          <h4>Tax Offices</h4>
-        </div>
-        <div class="who-help-item fade-in-up">
-          <div class="who-help-icon">&#9878;</div>
-          <h4>Law Firms</h4>
-        </div>
-        <div class="who-help-item fade-in-up">
-          <div class="who-help-icon">&#127973;</div>
-          <h4>Medical Practices</h4>
-        </div>
-        <div class="who-help-item fade-in-up">
-          <div class="who-help-icon">&#128736;</div>
-          <h4>Local Service Businesses</h4>
+    <!-- Services Section -->
+    <section id="services" class="section services">
+      <div class="container">
+        <h2 class="section-title fade-in-up">What We Build</h2>
+        <p class="section-subtitle fade-in-up">Systems that eliminate manual work and let your team focus on what actually matters.</p>
+        <div class="services-grid">
+          <div class="service-card fade-in-up">
+            <div class="service-icon">&#127760;</div>
+            <h3>AI-Powered Websites</h3>
+            <p>Smart, conversion-focused websites built for local businesses.</p>
+          </div>
+          <div class="service-card fade-in-up">
+            <div class="service-icon">&#9881;</div>
+            <h3>Automation Workflows</h3>
+            <p>Eliminate manual, repetitive work with intelligent process automation.</p>
+          </div>
+          <div class="service-card fade-in-up">
+            <div class="service-icon">&#128200;</div>
+            <h3>Lead Generation Systems</h3>
+            <p>Automated pipelines that qualify and capture leads 24/7.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- How It Works Section -->
-  <section id="how-works" class="section how-works">
-    <div class="container">
-      <h2 class="section-title fade-in-up">How It Works</h2>
-      <p class="section-subtitle fade-in-up">A clear process designed to identify opportunities and implement solutions
-        that deliver measurable results.</p>
-      <div class="how-works-timeline">
-        <div class="how-works-step fade-in-up">
-          <div class="step-number">1</div>
-          <h3>Discovery Call</h3>
-          <p>We learn your business, bottlenecks, and goals.</p>
-        </div>
-        <div class="how-works-step fade-in-up">
-          <div class="step-number">2</div>
-          <h3>Audit</h3>
-          <p>We map every manual process and identify automation opportunities.</p>
-        </div>
-        <div class="how-works-step fade-in-up">
-          <div class="step-number">3</div>
-          <h3>Implementation</h3>
-          <p>Custom workflows and systems are built and deployed.</p>
-        </div>
-        <div class="how-works-step fade-in-up">
-          <div class="step-number">4</div>
-          <h3>Optimization</h3>
-          <p>We monitor, refine, and scale what's working.</p>
+    <!-- Who We Help Section -->
+    <section id="who-help" class="section who-help">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Who We Help</h2>
+        <p class="section-subtitle fade-in-up">We specialize in industries where time is critical and processes are often manual.</p>
+        <div class="who-help-grid">
+          <div class="who-help-item fade-in-up">
+            <div class="who-help-icon">&#128176;</div>
+            <h4>Tax Offices</h4>
+          </div>
+          <div class="who-help-item fade-in-up">
+            <div class="who-help-icon">&#9878;</div>
+            <h4>Law Firms</h4>
+          </div>
+          <div class="who-help-item fade-in-up">
+            <div class="who-help-icon">&#127973;</div>
+            <h4>Medical Practices</h4>
+          </div>
+          <div class="who-help-item fade-in-up">
+            <div class="who-help-icon">&#128736;</div>
+            <h4>Local Service Businesses</h4>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Stats Section -->
-  <section id="results" class="section stats">
-    <div class="container">
-      <h2 class="section-title fade-in-up">Results That Matter</h2>
-      <p class="section-subtitle fade-in-up">Measurable outcomes across the businesses we've helped.</p>
-      <div class="stats-grid">
-        <div class="stat-card fade-in-up">
-          <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
-          <div class="stat-label">Businesses Helped</div>
-        </div>
-        <div class="stat-card fade-in-up">
-          <div class="stat-number"><span class="counter" data-target="2">0</span>M+</div>
-          <div class="stat-label">Hours Automated</div>
-        </div>
-        <div class="stat-card fade-in-up">
-          <div class="stat-number"><span class="counter" data-target="98">0</span>%</div>
-          <div class="stat-label">Client Satisfaction</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies Section -->
-  <section class="section case-studies">
-    <div class="container">
-      <h2 class="section-title fade-in-up">Case Studies</h2>
-      <p class="section-subtitle fade-in-up">Real results from businesses like yours.</p>
-      <div class="case-studies-grid">
-        <div class="case-study-card fade-in-up">
-          <div class="case-study-industry">Tax Office</div>
-          <div class="case-study-result">Reduced client intake processing time by 74%</div>
-          <p class="case-study-problem">Automated document collection workflows eliminated redundant data entry and
-            follow-up calls.</p>
-          <p class="case-study-quote">"We went from spending 3 hours per client intake to under 45 minutes. The
-            automation handles everything."</p>
-        </div>
-        <div class="case-study-card fade-in-up">
-          <div class="case-study-industry">Law Firm</div>
-          <div class="case-study-result">Eliminated 20+ hours/week of manual scheduling</div>
-          <p class="case-study-problem">An AI-powered client pipeline automated scheduling and follow-up communications.
-          </p>
-          <p class="case-study-quote">"Our paralegals now focus on actual legal work instead of playing phone tag with
-            potential clients."</p>
-        </div>
-        <div class="case-study-card fade-in-up">
-          <div class="case-study-industry">Medical Practice</div>
-          <div class="case-study-result">Cut appointment no-shows by 60%</div>
-          <p class="case-study-problem">Automated reminder and rebooking sequences ensured patients never missed
-            appointments.</p>
-          <p class="case-study-quote">"The automated reminders paid for themselves within the first month. No-shows used
-            to cost us thousands weekly."</p>
+    <!-- How It Works Section -->
+    <section id="how-works" class="section how-works">
+      <div class="container">
+        <h2 class="section-title fade-in-up">How It Works</h2>
+        <p class="section-subtitle fade-in-up">A clear process designed to identify opportunities and implement solutions that deliver measurable results.</p>
+        <div class="how-works-timeline">
+          <div class="how-works-step fade-in-up">
+            <div class="step-number">1</div>
+            <h3>Discovery Call</h3>
+            <p>We learn your business, bottlenecks, and goals.</p>
+          </div>
+          <div class="how-works-step fade-in-up">
+            <div class="step-number">2</div>
+            <h3>Audit</h3>
+            <p>We map every manual process and identify automation opportunities.</p>
+          </div>
+          <div class="how-works-step fade-in-up">
+            <div class="step-number">3</div>
+            <h3>Implementation</h3>
+            <p>Custom workflows and systems are built and deployed.</p>
+          </div>
+          <div class="how-works-step fade-in-up">
+            <div class="step-number">4</div>
+            <h3>Optimization</h3>
+            <p>We monitor, refine, and scale what's working.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Final CTA Section -->
-  <section id="contact" class="section final-cta">
-    <div class="container">
-      <div class="final-cta-content fade-in-up">
-        <h2>Ready to see what automation could do for your business?</h2>
-        <p>See exactly where your business is losing time — and what it would look like automated.</p>
-        <a href="#" class="cta-button">Book a Free Strategy Call</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <div class="logo-icon">SS</div>
-          <span>Skalny Systems</span>
+    <!-- Stats Section -->
+    <section id="results" class="section stats">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Results That Matter</h2>
+        <p class="section-subtitle fade-in-up">Measurable outcomes across the businesses we've helped.</p>
+        <div class="stats-grid">
+          <div class="stat-card fade-in-up">
+            <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
+            <div class="stat-label">Businesses Helped</div>
+          </div>
+          <div class="stat-card fade-in-up">
+            <div class="stat-number"><span class="counter" data-target="2">0</span>M+</div>
+            <div class="stat-label">Hours Automated</div>
+          </div>
+          <div class="stat-card fade-in-up">
+            <div class="stat-number"><span class="counter" data-target="98">0</span>%</div>
+            <div class="stat-label">Client Satisfaction</div>
+          </div>
         </div>
-        <p class="footer-tagline">Systematic automation for businesses that are ready to scale.</p>
-        <nav class="footer-nav">
-          <a href="#services">Services</a>
-          <a href="#who-help">Who We Help</a>
-          <a href="#how-works">How It Works</a>
-          <a href="#results">Results</a>
-        </nav>
-        <div class="footer-divider"></div>
-        <p class="footer-copyright">© 2025 Skalny Systems. All rights reserved.</p>
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <script>
-    // ============================================
-    // MOBILE MENU TOGGLE
-    // ============================================
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
+    <!-- Case Studies Section -->
+    <section class="section case-studies">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Case Studies</h2>
+        <p class="section-subtitle fade-in-up">Real results from businesses like yours.</p>
+        <div class="case-studies-grid">
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-industry">Tax Office</div>
+            <div class="case-study-result">Reduced client intake processing time by 74%</div>
+            <p class="case-study-problem">Automated document collection workflows eliminated redundant data entry and follow-up calls.</p>
+            <p class="case-study-quote">"We went from spending 3 hours per client intake to under 45 minutes. The automation handles everything."</p>
+          </div>
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-industry">Law Firm</div>
+            <div class="case-study-result">Eliminated 20+ hours/week of manual scheduling</div>
+            <p class="case-study-problem">An AI-powered client pipeline automated scheduling and follow-up communications.</p>
+            <p class="case-study-quote">"Our paralegals now focus on actual legal work instead of playing phone tag with potential clients."</p>
+          </div>
+          <div class="case-study-card fade-in-up">
+            <div class="case-study-industry">Medical Practice</div>
+            <div class="case-study-result">Cut appointment no-shows by 60%</div>
+            <p class="case-study-problem">Automated reminder and rebooking sequences ensured patients never missed appointments.</p>
+            <p class="case-study-quote">"The automated reminders paid for themselves within the first month. No-shows used to cost us thousands weekly."</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    mobileMenuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
+    <!-- Final CTA Section -->
+    <section id="contact" class="section final-cta">
+      <div class="container">
+        <div class="final-cta-content fade-in-up">
+          <h2>Ready to see what automation could do for your business?</h2>
+          <p>See exactly where your business is losing time — and what it would look like automated.</p>
+          <a href="#" class="cta-button">Book a Free Strategy Call</a>
+        </div>
+      </div>
+    </section>
 
-    // Close mobile menu when clicking links
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <div class="logo-icon">SS</div>
+            <span>Skalny Systems</span>
+          </div>
+          <p class="footer-tagline">Systematic automation for businesses that are ready to scale.</p>
+          <nav class="footer-nav">
+            <a href="#services">Services</a>
+            <a href="#who-help">Who We Help</a>
+            <a href="#how-works">How It Works</a>
+            <a href="#results">Results</a>
+          </nav>
+          <div class="footer-divider"></div>
+          <p class="footer-copyright">© 2025 Skalny Systems. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ============================================
+      // MOBILE MENU TOGGLE
+      // ============================================
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileMenu = document.querySelector('.mobile-menu');
+
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
       });
-    });
 
-    // ============================================
-    // FADE-IN-UP ANIMATION ON SCROLL
-    // ============================================
-    const fadeElements = document.querySelectorAll('.fade-in-up');
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.1
-    };
-
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
+      // Close mobile menu when clicking links
+      const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+        });
       });
-    }, observerOptions);
 
-    fadeElements.forEach(element => {
-      fadeObserver.observe(element);
-    });
+      // ============================================
+      // FADE-IN-UP ANIMATION ON SCROLL
+      // ============================================
+      const fadeElements = document.querySelectorAll('.fade-in-up');
 
-    // ============================================
-    // STAT COUNTER ANIMATION
-    // ============================================
-    const counters = document.querySelectorAll('.counter');
-    let countersAnimated = false;
-
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !countersAnimated) {
-          countersAnimated = true;
-          animateCounters();
-        }
-      });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.querySelector('.stats-grid');
-    if (statsSection) {
-      counterObserver.observe(statsSection);
-    }
-
-    function animateCounters() {
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const updateCounter = () => {
-          current += step;
-          if (current < target) {
-            counter.textContent = Math.floor(current);
-            requestAnimationFrame(updateCounter);
-          } else {
-            counter.textContent = target;
-          }
-        };
-
-        updateCounter();
-      });
-    }
-
-    // ============================================
-    // SMOOTH SCROLL FOR ANCHOR LINKS
-    // ============================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          e.preventDefault();
-          const navHeight = document.querySelector('.nav').offsetHeight;
-          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // ============================================
-    // NAV BACKGROUND ON SCROLL
-    // ============================================
-    const nav = document.querySelector('.nav');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        nav.style.background = 'rgba(11, 13, 19, 0.95)';
-      } else {
-        nav.style.background = 'rgba(11, 13, 19, 0.8)';
-      }
-    });
-
-    // ============================================
-    // HERO PARTICLES BACKGROUND
-    // ============================================
-    const canvas = document.getElementById('hero-particles');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      let animationFrameId;
-
-      let width = canvas.width = canvas.offsetWidth;
-      let height = canvas.height = canvas.offsetHeight;
-
-      const mouse = {
-        x: null,
-        y: null,
-        radius: 120
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
       };
 
-      window.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach(element => {
+        fadeObserver.observe(element);
       });
 
-      window.addEventListener('mouseleave', () => {
-        mouse.x = null;
-        mouse.y = null;
+      // ============================================
+      // STAT COUNTER ANIMATION
+      // ============================================
+      const counters = document.querySelectorAll('.counter');
+      let countersAnimated = false;
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !countersAnimated) {
+            countersAnimated = true;
+            animateCounters();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      const statsSection = document.querySelector('.stats-grid');
+      if (statsSection) {
+        counterObserver.observe(statsSection);
+      }
+
+      function animateCounters() {
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'));
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let current = 0;
+
+          const updateCounter = () => {
+            current += step;
+            if (current < target) {
+              counter.textContent = Math.floor(current);
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
+            }
+          };
+
+          updateCounter();
+        });
+      }
+
+      // ============================================
+      // SMOOTH SCROLL FOR ANCHOR LINKS
+      // ============================================
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            const navHeight = document.querySelector('.nav').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
       });
 
-      class Particle {
-        constructor() {
-          this.x = Math.random() * width;
-          this.y = Math.random() * height;
-          this.size = Math.random() * 1.5 + 0.5; // very small: 0.5px to 2px
-          this.speedX = (Math.random() - 0.5) * 0.2; // extremely slow
-          this.speedY = (Math.random() - 0.5) * 0.2;
-          this.opacity = Math.random() * 0.4 + 0.15;
+      // ============================================
+      // NAV BACKGROUND ON SCROLL
+      // ============================================
+      const nav = document.querySelector('.nav');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          nav.style.background = 'rgba(15, 17, 23, 0.95)';
+        } else {
+          nav.style.background = 'rgba(15, 17, 23, 0.9)';
         }
-
-        update() {
-          this.x += this.speedX;
-          this.y += this.speedY;
-
-          // wrap around boundaries gently
-          if (this.x < 0) this.x = width;
-          if (this.x > width) this.x = 0;
-          if (this.y < 0) this.y = height;
-          if (this.y > height) this.y = 0;
-        }
-
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(147, 197, 253, ${this.opacity})`; // Soft light blue tint
-          ctx.fill();
-        }
-      }
-
-      function initParticles() {
-        particles = [];
-        // Adapt density to screen size
-        const numberOfParticles = Math.floor((width * height) / 24000);
-        const limit = Math.min(numberOfParticles, 60); // upper cap for performance
-        for (let i = 0; i < limit; i++) {
-          particles.push(new Particle());
-        }
-      }
-
-      function handleResize() {
-        if (canvas.offsetWidth !== width || canvas.offsetHeight !== height) {
-          width = canvas.width = canvas.offsetWidth;
-          height = canvas.height = canvas.offsetHeight;
-          initParticles();
-        }
-      }
-
-      function connectParticles() {
-        const maxDistance = 110;
-        for (let a = 0; a < particles.length; a++) {
-          for (let b = a + 1; b < particles.length; b++) {
-            const dx = particles[a].x - particles[b].x;
-            const dy = particles[a].y - particles[b].y;
-            const distance = Math.hypot(dx, dy);
-
-            if (distance < maxDistance) {
-              // Fade out lines based on distance
-              const alpha = (1 - (distance / maxDistance)) * 0.06;
-              ctx.strokeStyle = `rgba(147, 197, 253, ${alpha})`;
-              ctx.lineWidth = 0.8;
-              ctx.beginPath();
-              ctx.moveTo(particles[a].x, particles[a].y);
-              ctx.lineTo(particles[b].x, particles[b].y);
-              ctx.stroke();
-            }
-          }
-
-          // Connect to mouse if close
-          if (mouse.x !== null && mouse.y !== null) {
-            const dxMouse = particles[a].x - mouse.x;
-            const dyMouse = particles[a].y - mouse.y;
-            const distMouse = Math.hypot(dxMouse, dyMouse);
-
-            if (distMouse < mouse.radius) {
-              const alpha = (1 - (distMouse / mouse.radius)) * 0.1;
-              ctx.strokeStyle = `rgba(147, 197, 253, ${alpha})`;
-              ctx.lineWidth = 0.8;
-              ctx.beginPath();
-              ctx.moveTo(particles[a].x, particles[a].y);
-              ctx.lineTo(mouse.x, mouse.y);
-              ctx.stroke();
-            }
-          }
-        }
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (let i = 0; i < particles.length; i++) {
-          particles[i].update();
-          particles[i].draw();
-        }
-
-        connectParticles();
-        animationFrameId = requestAnimationFrame(animate);
-      }
-
-      initParticles();
-      animate();
-
-      window.addEventListener('resize', handleResize);
-    }
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
