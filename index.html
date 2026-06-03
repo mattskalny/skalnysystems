@@ -128,15 +128,17 @@
       }
 
       .logo-icon {
-        width: 36px;
-        height: 36px;
-        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 1rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        display: block;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .footer-logo .logo-icon {
+        width: 40px;
+        height: 40px;
       }
 
       .nav-links {
@@ -197,10 +199,12 @@
       .hero {
         min-height: 100vh;
         display: flex;
-        align-items: center;
-        padding-top: 100px;
+        align-items: flex-start;
+        padding-top: 128px;
+        padding-bottom: 80px;
         position: relative;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: visible;
       }
 
       .hero::before {
@@ -224,12 +228,91 @@
       }
 
       .hero-headline {
-        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
         font-weight: 700;
         color: #FFFFFF;
         line-height: 1.1;
-        margin-bottom: 24px;
         letter-spacing: -0.02em;
+      }
+
+      .hero-headline-slot {
+        font-size: clamp(2rem, 4.5vw, 3.5rem);
+        min-height: calc(1.1em + 1.2 * clamp(1.375rem, 3vw, 2.25rem));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 32px;
+        overflow: visible;
+      }
+
+      .hero-headline-line1 {
+        display: block;
+        line-height: 1.1;
+      }
+
+      .hero-headline-line2 {
+        display: block;
+        font-size: clamp(1.375rem, 3vw, 2.25rem);
+        line-height: 1.2;
+        color: #3B82F6;
+        min-height: 1.2em;
+      }
+
+      .hero-headline-dynamic {
+        display: inline;
+        font-size: inherit;
+      }
+
+      .hero-typewriter-cursor {
+        display: inline-block;
+        color: #3B82F6;
+        font-weight: 400;
+        margin-left: 2px;
+        animation: blinkCursor 1s step-end infinite;
+      }
+
+      @keyframes blinkCursor {
+        50% { opacity: 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-typewriter-cursor {
+          display: none;
+          animation: none;
+        }
+      }
+
+      .hero-proof {
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #CBD5E1;
+        margin: 0 auto 16px;
+        max-width: 640px;
+      }
+
+      .hero-proof strong {
+        color: #3B82F6;
+        font-weight: 600;
+      }
+
+      .hero-industries {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 12px;
+        margin: 0 auto 28px;
+        max-width: 520px;
+      }
+
+      .hero-industry-chip {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #94A3B8;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
       }
 
       .hero-subheadline {
@@ -237,7 +320,406 @@
         color: #94A3B8;
         line-height: 1.7;
         max-width: 750px;
-        margin: 0 auto 48px;
+        margin: 0 auto 28px;
+      }
+
+      .hero-cta-wrap {
+        margin-bottom: 8px;
+      }
+
+      .hero-cta-wrap--after-calc {
+        margin-top: 32px;
+        margin-bottom: 28px;
+      }
+
+      .hero-cta-note {
+        margin-top: 12px;
+        font-size: 0.8125rem;
+        color: #64748B;
+      }
+
+      .hero-cta-secondary {
+        font-size: 0.9375rem;
+        padding: 14px 32px;
+      }
+
+      .hero-trust-inline {
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      .hero-trust-inline-label {
+        font-size: 0.6875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #64748B;
+        margin-bottom: 12px;
+      }
+
+      .hero-trust-inline-logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px 28px;
+      }
+
+      .hero-trust-inline-logos .trusted-logo-text {
+        height: 24px;
+        font-size: 0.875rem;
+        opacity: 0.45;
+      }
+
+      .hero-calculator {
+        width: 100%;
+        max-width: 480px;
+        min-width: 280px;
+        margin: 32px auto 0;
+        padding: 32px 28px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        text-align: left;
+      }
+
+      .hero-calculator-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .hero-calculator-field {
+        margin-bottom: 20px;
+      }
+
+      .hero-calculator-field label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #94A3B8;
+        margin-bottom: 8px;
+      }
+
+      .hero-calculator-field input[type="range"] {
+        width: 100%;
+        height: 8px;
+        accent-color: #3B82F6;
+        cursor: pointer;
+        min-height: 44px;
+      }
+
+      .hero-calculator-field input[type="number"] {
+        width: 100%;
+        padding: 12px 14px;
+        min-height: 44px;
+        background: rgba(15, 17, 23, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: #FFFFFF;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      .hero-calculator-range-value {
+        float: right;
+        color: #3B82F6;
+        font-weight: 600;
+      }
+
+      .hero-calculator-results {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        min-height: 120px;
+      }
+
+      .hero-calculator-stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 12px;
+        font-size: 0.9375rem;
+      }
+
+      .hero-calculator-stat strong {
+        font-size: 1.25rem;
+        color: #FFFFFF;
+        font-weight: 700;
+      }
+
+      .hero-calculator-message {
+        margin-top: 16px;
+        font-size: 0.875rem;
+        color: #94A3B8;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      /* ============================================
+         TRUSTED BY SECTION
+         ============================================ */
+      .trusted-by {
+        padding: 48px 0;
+        background: rgba(255, 255, 255, 0.02);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .trusted-by-label {
+        text-align: center;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #64748B;
+        margin-bottom: 28px;
+      }
+
+      .trusted-by-logos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 40px 48px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .trusted-by-logos img,
+      .trusted-logo-text {
+        height: 32px;
+        width: auto;
+        max-width: 140px;
+        object-fit: contain;
+        opacity: 0.5;
+        filter: grayscale(100%);
+        transition: opacity 0.2s ease, filter 0.2s ease;
+      }
+
+      .trusted-logo-text {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #94A3B8;
+        letter-spacing: -0.02em;
+        height: 32px;
+        filter: none;
+      }
+
+      .trusted-by-logos a:hover img,
+      .trusted-by-logos a:hover .trusted-logo-text {
+        opacity: 0.85;
+        filter: grayscale(0%);
+        color: #CBD5E1;
+      }
+
+      /* ============================================
+         MINI CASE STUDY SECTION
+         ============================================ */
+      .mini-case-study {
+        background: linear-gradient(180deg, #12141C 0%, #0F1117 100%);
+      }
+
+      .mini-case-study-tag {
+        display: block;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      .mini-case-study-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .mini-case-block {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 32px 28px;
+      }
+
+      .mini-case-block h3 {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #64748B;
+        margin-bottom: 12px;
+      }
+
+      .mini-case-block p {
+        font-size: 1rem;
+        color: #CBD5E1;
+        line-height: 1.6;
+      }
+
+      .mini-case-block--outcome {
+        border-color: rgba(59, 130, 246, 0.25);
+        background: rgba(37, 99, 235, 0.06);
+      }
+
+      .mini-case-outcome-stat {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        color: #3B82F6;
+        line-height: 1.2;
+        margin-bottom: 8px;
+      }
+
+      /* ============================================
+         AUTOMATION HEALTH CHECK
+         ============================================ */
+      .health-check {
+        background: #0F1117;
+      }
+
+      .health-check-card {
+        max-width: 640px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 40px 36px;
+      }
+
+      .health-check-progress {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #3B82F6;
+        margin-bottom: 8px;
+      }
+
+      .health-check-question {
+        font-size: 1.375rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        margin-bottom: 28px;
+        line-height: 1.35;
+      }
+
+      .health-check-options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .health-check-option {
+        display: block;
+        width: 100%;
+        padding: 16px 20px;
+        min-height: 44px;
+        text-align: left;
+        background: rgba(15, 17, 23, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        color: #E2E8F0;
+        font-size: 1rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .health-check-option:hover {
+        border-color: rgba(59, 130, 246, 0.4);
+      }
+
+      .health-check-option.selected {
+        border-color: #3B82F6;
+        background: rgba(37, 99, 235, 0.12);
+      }
+
+      .health-check-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .health-check-next {
+        padding: 14px 32px;
+        min-height: 44px;
+        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+        color: #FFFFFF;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .health-check-next:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .health-check-next:not(:disabled):hover {
+        transform: translateY(-2px);
+      }
+
+      .health-check-skip {
+        color: #64748B;
+        font-size: 0.875rem;
+        text-decoration: none;
+      }
+
+      .health-check-skip:hover {
+        color: #94A3B8;
+      }
+
+      .health-check-step {
+        display: none;
+      }
+
+      .health-check-step.active {
+        display: block;
+      }
+
+      .health-check-result {
+        display: none;
+        text-align: center;
+      }
+
+      .health-check-result.visible {
+        display: block;
+      }
+
+      .health-check-result h3 {
+        font-size: 1.5rem;
+        color: #FFFFFF;
+        margin-bottom: 16px;
+      }
+
+      .health-check-result p {
+        color: #94A3B8;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .health-check-result ul {
+        text-align: left;
+        max-width: 400px;
+        margin: 0 auto 28px;
+        color: #CBD5E1;
+        padding-left: 20px;
+        line-height: 1.7;
+      }
+
+      .health-check-quiz.hidden {
+        display: none;
       }
 
       .cta-button {
@@ -297,7 +779,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.75rem;
+        color: #94A3B8;
+      }
+
+      .service-icon .line-icon,
+      .who-help-icon .line-icon {
+        width: 28px;
+        height: 28px;
+        stroke: currentColor;
+        fill: none;
       }
 
       .service-card h3 {
@@ -350,7 +840,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
+        color: #94A3B8;
+        transition: color 0.2s ease;
+      }
+
+      .who-help-item:hover .who-help-icon,
+      .service-card:hover .service-icon {
+        color: #CBD5E1;
       }
 
       .who-help-item h4 {
@@ -650,11 +1146,36 @@
 
         .hero {
           min-height: auto;
-          padding: 140px 0 80px;
+          padding: 152px 0 80px;
+        }
+
+        .hero-headline-slot {
+          min-height: calc(1.1em + 1.2 * clamp(1.25rem, 4vw, 2rem));
+        }
+
+        .hero-headline-line2 {
+          font-size: clamp(1.25rem, 4vw, 2rem);
         }
 
         .hero-subheadline {
-          margin-bottom: 40px;
+          margin-bottom: 28px;
+        }
+
+        .hero-calculator {
+          margin-top: 40px;
+          padding: 24px 20px;
+        }
+
+        .mini-case-study-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .health-check-card {
+          padding: 28px 20px;
+        }
+
+        .trusted-by-logos {
+          gap: 24px 32px;
         }
 
         .section-subtitle {
@@ -735,7 +1256,7 @@
     <nav class="nav">
       <div class="nav-container">
         <a href="#" class="logo">
-          <div class="logo-icon">SS</div>
+          <img src="assets/logo.png" alt="" class="logo-icon" width="44" height="44">
           <span>Skalny Systems</span>
         </a>
         <ul class="nav-links">
@@ -768,9 +1289,82 @@
     <section class="hero">
       <div class="container">
         <div class="hero-content fade-in-up">
-          <h1 class="hero-headline">Your team is spending hours on work that shouldn't require a human.</h1>
-          <p class="hero-subheadline">Manual data entry. Disconnected tools. Repeating the same steps every day. AI automation isn't a trend — it's a systematic way to reclaim time.</p>
-          <a href="#contact" class="cta-button">Book a Free Strategy Call</a>
+          <div class="hero-headline-slot">
+            <h1 class="hero-headline">
+              <span class="hero-headline-line1">Your team is losing hours to</span>
+              <span class="hero-headline-line2">
+                <span class="hero-headline-dynamic" id="typewriter-word" aria-hidden="true"></span><span class="hero-typewriter-cursor" aria-hidden="true">|</span>
+              </span>
+            </h1>
+          </div>
+          <p class="hero-proof fade-in-up"><strong>50+ businesses</strong> · <strong>2M+ hours</strong> automated · outcomes in weeks, not someday</p>
+          <div class="hero-industries fade-in-up" aria-label="Industries we serve">
+            <span class="hero-industry-chip">Tax offices</span>
+            <span class="hero-industry-chip">Law firms</span>
+            <span class="hero-industry-chip">Medical practices</span>
+            <span class="hero-industry-chip">Local services</span>
+          </div>
+          <p class="hero-subheadline">Every week that manual work continues, you pay real payroll dollars—and clients feel the delay. We map what to automate first on a free strategy call.</p>
+
+          <div class="hero-cta-wrap fade-in-up">
+            <a href="#contact" class="cta-button" data-event="hero-cta-primary">Book a Free Strategy Call</a>
+            <p class="hero-cta-note">Free 30-minute call · No obligation · Leave with a clear priority list</p>
+          </div>
+
+          <div class="hero-calculator" id="hero-calculator">
+            <p class="hero-calculator-title">See what manual work is costing you</p>
+            <div class="hero-calculator-field">
+              <label for="calc-hours">Hours per week on manual work <span class="hero-calculator-range-value" id="calc-hours-display">15</span></label>
+              <input type="range" id="calc-hours" min="1" max="80" value="15" aria-valuemin="1" aria-valuemax="80" aria-valuenow="15">
+            </div>
+            <div class="hero-calculator-field">
+              <label for="calc-people">People doing this work</label>
+              <input type="number" id="calc-people" min="1" max="500" value="3" inputmode="numeric">
+            </div>
+            <div class="hero-calculator-field">
+              <label for="calc-rate">Average hourly cost ($)</label>
+              <input type="number" id="calc-rate" min="15" max="500" value="35" inputmode="numeric">
+            </div>
+            <div class="hero-calculator-results" id="calc-results" aria-live="polite">
+              <div class="hero-calculator-stat">
+                <span>Hours lost per month</span>
+                <strong id="calc-monthly-hours">—</strong>
+              </div>
+              <div class="hero-calculator-stat">
+                <span>Estimated annual cost</span>
+                <strong id="calc-annual-cost">—</strong>
+              </div>
+              <p class="hero-calculator-message" id="calc-message">Move the slider to see your numbers—most teams underestimate the annual cost.</p>
+            </div>
+          </div>
+
+          <div class="hero-cta-wrap hero-cta-wrap--after-calc fade-in-up">
+            <a href="#contact" class="cta-button hero-cta-secondary" data-event="hero-cta-after-calc" id="hero-cta-after-calc">Get a plan to recover this</a>
+          </div>
+
+          <div class="hero-trust-inline fade-in-up" aria-label="Trusted by">
+            <p class="hero-trust-inline-label">Trusted by growing teams</p>
+            <div class="hero-trust-inline-logos">
+              <span class="trusted-logo-text" aria-label="Summit Tax Partners">Summit Tax</span>
+              <span class="trusted-logo-text" aria-label="Harbor Legal Group">Harbor Legal</span>
+              <span class="trusted-logo-text" aria-label="Northline Medical">Northline Medical</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trusted By -->
+    <section class="trusted-by" aria-label="Trusted by">
+      <div class="container">
+        <p class="trusted-by-label">Trusted by growing teams</p>
+        <div class="trusted-by-logos">
+          <span class="trusted-logo-text" aria-label="Summit Tax Partners">Summit Tax</span>
+          <span class="trusted-logo-text" aria-label="Harbor Legal Group">Harbor Legal</span>
+          <span class="trusted-logo-text" aria-label="Northline Medical">Northline Medical</span>
+          <span class="trusted-logo-text" aria-label="Peak Service Co">Peak Service Co</span>
+          <span class="trusted-logo-text" aria-label="Atlas Accounting">Atlas Accounting</span>
+          <span class="trusted-logo-text" aria-label="Bridgepoint Law">Bridgepoint Law</span>
         </div>
       </div>
     </section>
@@ -782,17 +1376,23 @@
         <p class="section-subtitle fade-in-up">Systems that eliminate manual work and let your team focus on what actually matters.</p>
         <div class="services-grid">
           <div class="service-card fade-in-up">
-            <div class="service-icon">&#127760;</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg class="line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
             <h3>AI-Powered Websites</h3>
             <p>Smart, conversion-focused websites built for local businesses.</p>
           </div>
           <div class="service-card fade-in-up">
-            <div class="service-icon">&#9881;</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg class="line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
+            </div>
             <h3>Automation Workflows</h3>
             <p>Eliminate manual, repetitive work with intelligent process automation.</p>
           </div>
           <div class="service-card fade-in-up">
-            <div class="service-icon">&#128200;</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg class="line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
             <h3>Lead Generation Systems</h3>
             <p>Automated pipelines that qualify and capture leads 24/7.</p>
           </div>
@@ -807,19 +1407,27 @@
         <p class="section-subtitle fade-in-up">We specialize in industries where time is critical and processes are often manual.</p>
         <div class="who-help-grid">
           <div class="who-help-item fade-in-up">
-            <div class="who-help-icon">&#128176;</div>
+            <div class="who-help-icon" aria-hidden="true">
+              <svg class="line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            </div>
             <h4>Tax Offices</h4>
           </div>
           <div class="who-help-item fade-in-up">
-            <div class="who-help-icon">&#9878;</div>
+            <div class="who-help-icon" aria-hidden="true">
+              <svg class="line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+            </div>
             <h4>Law Firms</h4>
           </div>
           <div class="who-help-item fade-in-up">
-            <div class="who-help-icon">&#127973;</div>
+            <div class="who-help-icon" aria-hidden="true">
+              <svg class="line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg>
+            </div>
             <h4>Medical Practices</h4>
           </div>
           <div class="who-help-item fade-in-up">
-            <div class="who-help-icon">&#128736;</div>
+            <div class="who-help-icon" aria-hidden="true">
+              <svg class="line-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
             <h4>Local Service Businesses</h4>
           </div>
         </div>
@@ -878,6 +1486,30 @@
       </div>
     </section>
 
+    <!-- Mini Case Study -->
+    <section id="mini-case-study" class="section mini-case-study">
+      <div class="container">
+        <span class="case-study-industry mini-case-study-tag fade-in-up">Tax Office</span>
+        <h2 class="section-title fade-in-up">How one firm reclaimed their week</h2>
+        <p class="section-subtitle fade-in-up">A single automation project — problem, solution, and measurable outcome.</p>
+        <div class="mini-case-study-grid">
+          <div class="mini-case-block fade-in-up">
+            <h3>Problem</h3>
+            <p>Client intake required hours of manual document chasing, duplicate data entry, and follow-up calls every tax season.</p>
+          </div>
+          <div class="mini-case-block fade-in-up">
+            <h3>Solution</h3>
+            <p>We built automated document collection workflows that sync intake data across their CRM and filing prep tools.</p>
+          </div>
+          <div class="mini-case-block mini-case-block--outcome fade-in-up">
+            <h3>Outcome</h3>
+            <p class="mini-case-outcome-stat">74% faster intake</p>
+            <p>From 3 hours per client to under 45 minutes — with fewer errors and zero manual follow-ups.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Case Studies Section -->
     <section class="section case-studies">
       <div class="container">
@@ -906,13 +1538,62 @@
       </div>
     </section>
 
+    <!-- Automation Health Check -->
+    <section id="automation-health-check" class="section health-check">
+      <div class="container">
+        <h2 class="section-title fade-in-up">Automation health check</h2>
+        <p class="section-subtitle fade-in-up">Three quick questions to see where your business stands — takes under a minute.</p>
+        <div class="health-check-card fade-in-up">
+          <div class="health-check-quiz" id="health-check-quiz">
+            <div class="health-check-step active" data-step="0">
+              <p class="health-check-progress">Question 1 of 3</p>
+              <p class="health-check-question" id="health-q-text-0">How much repetitive manual work happens weekly?</p>
+              <div class="health-check-options" role="group" aria-labelledby="health-q-text-0">
+                <button type="button" class="health-check-option" data-score="1">A few hours — manageable</button>
+                <button type="button" class="health-check-option" data-score="2">10–20 hours — noticeable drag</button>
+                <button type="button" class="health-check-option" data-score="3">20+ hours — major bottleneck</button>
+              </div>
+            </div>
+            <div class="health-check-step" data-step="1">
+              <p class="health-check-progress">Question 2 of 3</p>
+              <p class="health-check-question" id="health-q-text-1">Are your core tools connected (CRM, email, sheets, etc.)?</p>
+              <div class="health-check-options" role="group" aria-labelledby="health-q-text-1">
+                <button type="button" class="health-check-option" data-score="1">Rarely — lots of copy-paste</button>
+                <button type="button" class="health-check-option" data-score="2">Partly — some integrations</button>
+                <button type="button" class="health-check-option" data-score="3">Mostly — still manual gaps</button>
+              </div>
+            </div>
+            <div class="health-check-step" data-step="2">
+              <p class="health-check-progress">Question 3 of 3</p>
+              <p class="health-check-question" id="health-q-text-2">Has your team tried automation before?</p>
+              <div class="health-check-options" role="group" aria-labelledby="health-q-text-2">
+                <button type="button" class="health-check-option" data-score="1">Never</button>
+                <button type="button" class="health-check-option" data-score="2">Tried and stalled</button>
+                <button type="button" class="health-check-option" data-score="3">Some workflows in place</button>
+              </div>
+            </div>
+            <div class="health-check-actions">
+              <a href="#contact" class="health-check-skip">Skip to booking</a>
+              <button type="button" class="health-check-next" id="health-check-next" disabled>Next</button>
+            </div>
+          </div>
+          <div class="health-check-result" id="health-check-result" aria-live="polite">
+            <h3 id="health-result-title"></h3>
+            <p id="health-result-desc"></p>
+            <ul id="health-result-bullets"></ul>
+            <a href="#contact" class="cta-button" data-event="health-check-cta">Book a Free Strategy Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Final CTA Section -->
     <section id="contact" class="section final-cta">
       <div class="container">
         <div class="final-cta-content fade-in-up">
           <h2>Ready to see what automation could do for your business?</h2>
           <p>See exactly where your business is losing time — and what it would look like automated.</p>
-          <a href="#" class="cta-button">Book a Free Strategy Call</a>
+          <a href="#contact" class="cta-button" data-event="final-cta">Book a Free Strategy Call</a>
         </div>
       </div>
     </section>
@@ -922,7 +1603,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <div class="logo-icon">SS</div>
+            <img src="assets/logo.png" alt="" class="logo-icon" width="40" height="40">
             <span>Skalny Systems</span>
           </div>
           <p class="footer-tagline">Systematic automation for businesses that are ready to scale.</p>
@@ -1056,6 +1737,249 @@
           nav.style.background = 'rgba(15, 17, 23, 0.9)';
         }
       });
+
+      // ============================================
+      // HERO TYPEWRITER HEADLINE
+      // ============================================
+      (function initTypewriter() {
+        const words = ['follow-ups', 'scheduling', 'no-shows', 'callbacks', 'busywork'];
+        const wordEl = document.getElementById('typewriter-word');
+        const cursorEl = document.querySelector('.hero-typewriter-cursor');
+        if (!wordEl) return;
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reducedMotion) {
+          wordEl.textContent = words[0];
+          wordEl.setAttribute('aria-hidden', 'false');
+          return;
+        }
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeSpeed = 80;
+        const deleteSpeed = 50;
+        const pauseAfterWord = 2200;
+        const pauseAfterDelete = 400;
+
+        function announceWord(word) {
+          const live = document.getElementById('typewriter-live');
+          if (live) live.textContent = 'Your team is losing hours to ' + word;
+        }
+
+        let liveRegion = document.getElementById('typewriter-live');
+        if (!liveRegion) {
+          liveRegion = document.createElement('span');
+          liveRegion.id = 'typewriter-live';
+          liveRegion.className = 'visually-hidden';
+          liveRegion.setAttribute('aria-live', 'polite');
+          liveRegion.style.cssText = 'position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0';
+          document.querySelector('.hero-headline-slot').appendChild(liveRegion);
+        }
+        announceWord(words[0]);
+
+        function tick() {
+          const currentWord = words[wordIndex];
+
+          if (!isDeleting) {
+            wordEl.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === currentWord.length) {
+              announceWord(currentWord);
+              setTimeout(() => { isDeleting = true; tick(); }, pauseAfterWord);
+              return;
+            }
+            setTimeout(tick, typeSpeed);
+          } else {
+            wordEl.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+              isDeleting = false;
+              wordIndex = (wordIndex + 1) % words.length;
+              setTimeout(tick, pauseAfterDelete);
+              return;
+            }
+            setTimeout(tick, deleteSpeed);
+          }
+        }
+
+        wordEl.textContent = '';
+        charIndex = 0;
+        setTimeout(tick, 600);
+      })();
+
+      // ============================================
+      // HERO AUTOMATION CALCULATOR
+      // ============================================
+      (function initCalculator() {
+        const hoursInput = document.getElementById('calc-hours');
+        const hoursDisplay = document.getElementById('calc-hours-display');
+        const peopleInput = document.getElementById('calc-people');
+        const rateInput = document.getElementById('calc-rate');
+        const monthlyHoursEl = document.getElementById('calc-monthly-hours');
+        const annualCostEl = document.getElementById('calc-annual-cost');
+        const messageEl = document.getElementById('calc-message');
+
+        if (!hoursInput) return;
+
+        function formatNumber(n) {
+          return Math.round(n).toLocaleString('en-US');
+        }
+
+        function formatCurrency(n) {
+          return '$' + formatNumber(n);
+        }
+
+        function update() {
+          const hoursPerWeek = parseInt(hoursInput.value, 10) || 0;
+          const people = Math.max(1, parseInt(peopleInput.value, 10) || 1);
+          const rate = Math.max(15, parseInt(rateInput.value, 10) || 35);
+
+          hoursDisplay.textContent = hoursPerWeek;
+          hoursInput.setAttribute('aria-valuenow', hoursPerWeek);
+
+          const monthlyHours = hoursPerWeek * 4.33 * people;
+          const annualCost = monthlyHours * 12 * rate;
+
+          monthlyHoursEl.textContent = formatNumber(monthlyHours);
+          annualCostEl.textContent = formatCurrency(annualCost);
+
+          const annualFormatted = formatCurrency(annualCost);
+
+          if (monthlyHours >= 400) {
+            messageEl.textContent = 'At ' + annualFormatted + '/year, the ROI on automation is substantial—book a call to map your highest-impact workflows first.';
+          } else if (monthlyHours >= 160) {
+            messageEl.textContent = 'You\'re leaving roughly ' + annualFormatted + ' on the table annually—targeted workflows could recover hundreds of hours this year.';
+          } else {
+            messageEl.textContent = 'Even at this level, small automations compound—see where to start on a free 30-minute strategy call.';
+          }
+        }
+
+        hoursInput.addEventListener('input', update);
+        peopleInput.addEventListener('input', update);
+        rateInput.addEventListener('input', update);
+        update();
+      })();
+
+      // ============================================
+      // AUTOMATION HEALTH CHECK
+      // ============================================
+      (function initHealthCheck() {
+        const quiz = document.getElementById('health-check-quiz');
+        const steps = document.querySelectorAll('.health-check-step');
+        const nextBtn = document.getElementById('health-check-next');
+        const resultPanel = document.getElementById('health-check-result');
+        const resultTitle = document.getElementById('health-result-title');
+        const resultDesc = document.getElementById('health-result-desc');
+        const resultBullets = document.getElementById('health-result-bullets');
+
+        if (!quiz || !nextBtn) return;
+
+        let currentStep = 0;
+        const answers = [];
+        let selectedScore = null;
+
+        const tiers = {
+          low: {
+            title: 'Getting started',
+            desc: 'You have room to build a strong automation foundation with quick, high-impact wins.',
+            bullets: [
+              'Start with one repetitive workflow (intake, scheduling, or follow-ups)',
+              'Map where data is re-entered between tools',
+              'Book a call to prioritize your first automation'
+            ]
+          },
+          mid: {
+            title: 'Moderate automation potential',
+            desc: 'Manual work is costing you real time — the right systems could unlock meaningful capacity.',
+            bullets: [
+              'Connect your highest-traffic tools first',
+              'Automate the process your team complains about most',
+              'Plan a phased rollout to avoid disruption'
+            ]
+          },
+          high: {
+            title: 'High automation potential',
+            desc: 'Your business is primed for automation — the ROI on systematic workflows is substantial.',
+            bullets: [
+              'Run a full process audit to find duplicate work',
+              'Deploy end-to-end workflows across teams',
+              'Measure hours saved monthly and reinvest in growth'
+            ]
+          }
+        };
+
+        function getActiveStepEl() {
+          return steps[currentStep];
+        }
+
+        function clearSelection() {
+          selectedScore = null;
+          getActiveStepEl().querySelectorAll('.health-check-option').forEach(btn => {
+            btn.classList.remove('selected');
+          });
+          nextBtn.disabled = true;
+        }
+
+        function bindOptions() {
+          steps.forEach(step => {
+            step.querySelectorAll('.health-check-option').forEach(btn => {
+              btn.addEventListener('click', () => {
+                step.querySelectorAll('.health-check-option').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedScore = parseInt(btn.getAttribute('data-score'), 10);
+                nextBtn.disabled = false;
+                nextBtn.focus();
+              });
+            });
+          });
+        }
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter' || quiz.classList.contains('hidden') || nextBtn.disabled) return;
+          if (document.activeElement && document.activeElement.classList.contains('health-check-option')) {
+            e.preventDefault();
+            nextBtn.click();
+          }
+        });
+
+        function showStep(index) {
+          steps.forEach((s, i) => s.classList.toggle('active', i === index));
+          nextBtn.textContent = index === steps.length - 1 ? 'See results' : 'Next';
+          clearSelection();
+        }
+
+        function showResults() {
+          const total = answers.reduce((a, b) => a + b, 0);
+          let tier = tiers.low;
+          if (total >= 8) tier = tiers.high;
+          else if (total >= 5) tier = tiers.mid;
+
+          resultTitle.textContent = tier.title;
+          resultDesc.textContent = tier.desc;
+          resultBullets.innerHTML = tier.bullets.map(b => '<li>' + b + '</li>').join('');
+
+          quiz.classList.add('hidden');
+          resultPanel.classList.add('visible');
+          resultPanel.setAttribute('data-tier', total >= 8 ? 'high' : total >= 5 ? 'mid' : 'low');
+          resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        nextBtn.addEventListener('click', () => {
+          if (selectedScore === null) return;
+          answers[currentStep] = selectedScore;
+
+          if (currentStep < steps.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+          } else {
+            showResults();
+          }
+        });
+
+        bindOptions();
+        showStep(0);
+      })();
     </script>
   </body>
 </html>
